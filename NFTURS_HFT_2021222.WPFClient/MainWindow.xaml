@@ -44,7 +44,7 @@
                     Background="Beige" 
                     Margin="30,80, 30, 80"
                     FontSize="35"
-                    Click="Genre_Button_Click"
+                    Click="Publisher_Button_Click"
                     />
         </Grid>
 
