@@ -23,23 +23,16 @@ namespace NFTURS_HFT_2021222.WPFClient
             get { return selectedGenre; }
             set
             {
+                if (value == null) return; //null check
 
-                //if (value == null) return;
-
-                if (value != null)
+                selectedGenre = new Genre()
                 {
-                    selectedGenre = new Genre()
-                    {
-                        Name = value.Name,
-                        GenreId = value.GenreId
-                    };
+                    Name = value.Name,
+                    GenreId = value.GenreId
+                };
 
-                    OnPropertyChanged();
-                    (DeleteGenreCommand as RelayCommand).NotifyCanExecuteChanged();
-
-
-                }
-                //SetProperty(ref selectedGenre, value);
+                OnPropertyChanged();
+                (DeleteGenreCommand as RelayCommand).NotifyCanExecuteChanged();
             }
         }
 

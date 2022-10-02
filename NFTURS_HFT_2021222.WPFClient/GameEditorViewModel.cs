@@ -23,12 +23,9 @@ namespace NFTURS_HFT_2021222.WPFClient
             get { return selectedGame; }
             set
             {
+                if (value == null) return; //null check
 
-                //if (value == null) return;
-                
-                if (value != null)
-                {
-                    selectedGame = new Game()
+                selectedGame = new Game()
                     {
                         Name = value.Name,
                         GameId = value.GameId
@@ -36,10 +33,6 @@ namespace NFTURS_HFT_2021222.WPFClient
 
                     OnPropertyChanged();
                     (DeleteGameCommand as RelayCommand).NotifyCanExecuteChanged();
-
-                    
-                }
-                //SetProperty(ref selectedGame, value);
             }
         }
 

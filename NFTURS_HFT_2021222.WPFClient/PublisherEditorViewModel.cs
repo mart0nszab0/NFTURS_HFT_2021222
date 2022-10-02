@@ -23,23 +23,16 @@ namespace NFTURS_HFT_2021222.WPFClient
             get { return selectedPublisher; }
             set
             {
+                if (value == null) return; //null check
 
-                //if (value == null) return;
-
-                if (value != null)
+                selectedPublisher = new Publisher()
                 {
-                    selectedPublisher = new Publisher()
-                    {
-                        Name = value.Name,
-                        PublisherId = value.PublisherId
-                    };
+                    Name = value.Name,
+                    PublisherId = value.PublisherId
+                };
 
-                    OnPropertyChanged();
-                    (DeletePublisherCommand as RelayCommand).NotifyCanExecuteChanged();
-
-
-                }
-                //SetProperty(ref selectedPublisher, value);
+                OnPropertyChanged();
+                (DeletePublisherCommand as RelayCommand).NotifyCanExecuteChanged();
             }
         }
 
