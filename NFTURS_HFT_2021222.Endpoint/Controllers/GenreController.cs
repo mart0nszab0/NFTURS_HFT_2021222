@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using NFTURS_HFT_2021222.Endpoint.Services;
 using NFTURS_HFT_2021222.Logic;
 using NFTURS_HFT_2021222.Models;
 using System.Collections.Generic;
@@ -12,10 +14,12 @@ namespace NFTURS_HFT_2021222.Endpoint.Controllers
     public class GenreController : ControllerBase
     {
         IGenreLogic genreLogic;
+        IHubContext<SignalRHub> hub;
 
-        public GenreController(IGenreLogic genreLogic)
+        public GenreController(IGenreLogic genreLogic, IHubContext<SignalRHub> hub)
         {
             this.genreLogic = genreLogic;
+            this.hub = hub;
         }
 
 
@@ -39,6 +43,7 @@ namespace NFTURS_HFT_2021222.Endpoint.Controllers
         public void Update([FromBody] Genre value)
         {
             genreLogic.Update(value);
+            this.hub.Clients.All.SendAsync("GenreUpdated", value);
         }
 
         // PUT api/<GenreController>/5
@@ -46,13 +51,16 @@ namespace NFTURS_HFT_2021222.Endpoint.Controllers
         public void Create([FromBody] Genre value)
         {
             genreLogic.Create(value);
+            this.hub.Clients.All.SendAsync("GenreCreated", value);
         }
 
         // DELETE api/<GenreController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var GenreToDelete = this.genreLogic.Read(id);
             genreLogic.Delete(id);
+            this.hub.Clients.All.SendAsync("GenreDeleted", GenreToDelete);
         }
     }
 }

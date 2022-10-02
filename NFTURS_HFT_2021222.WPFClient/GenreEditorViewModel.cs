@@ -61,7 +61,7 @@ namespace NFTURS_HFT_2021222.WPFClient
         {
             if (!DesignMode)
             {
-                Genres = new RestCollection<Genre>("http://localhost:32095/", "Genre");
+                Genres = new RestCollection<Genre>("http://localhost:32095/", "Genre", "hub");
 
                 CreateGenreCommand = new RelayCommand(() =>
                 {
