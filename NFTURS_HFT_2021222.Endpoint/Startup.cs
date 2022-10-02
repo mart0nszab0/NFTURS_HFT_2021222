@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using NFTURS_HFT_2021222.Endpoint.Services;
 using NFTURS_HFT_2021222.Logic;
 using NFTURS_HFT_2021222.Models;
 using NFTURS_HFT_2021222.Repository;
@@ -40,9 +41,9 @@ namespace NFTURS_HFT_2021222.Endpoint
             services.AddTransient<IGameLogic, GameLogic>();
             services.AddTransient<IGenreLogic, GenreLogic>();
             services.AddTransient<IPublisherLogic, PublisherLogic>();
-            
 
-
+            ;
+            services.AddSignalR();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -79,7 +80,11 @@ namespace NFTURS_HFT_2021222.Endpoint
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                ;
+                endpoints.MapHub<SignalRHub>("/hub");
             });
+
+
         }
     }
 }

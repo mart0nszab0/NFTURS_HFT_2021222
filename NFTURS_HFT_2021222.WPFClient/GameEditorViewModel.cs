@@ -60,7 +60,7 @@ namespace NFTURS_HFT_2021222.WPFClient
         {
             if (!DesignMode)
             {
-                Games = new RestCollection<Game>("http://localhost:32095/", "Game");
+                Games = new RestCollection<Game>("http://localhost:32095/", "Game", "hub");
 
                 CreateGameCommand = new RelayCommand(() =>
                 {

@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using Newtonsoft.Json.Linq;
+using NFTURS_HFT_2021222.Endpoint.Services;
 using NFTURS_HFT_2021222.Logic;
 using NFTURS_HFT_2021222.Models;
 using System.Collections.Generic;
@@ -13,10 +16,12 @@ namespace NFTURS_HFT_2021222.Endpoint.Controllers
     public class GameController : ControllerBase
     {
         IGameLogic gameLogic;
+        IHubContext<SignalRHub> hub;
 
-        public GameController(IGameLogic gameLogic)
+        public GameController(IGameLogic gameLogic, IHubContext<SignalRHub> hub)
         {
             this.gameLogic = gameLogic;
+            this.hub = hub;
         }
 
 
@@ -39,8 +44,8 @@ namespace NFTURS_HFT_2021222.Endpoint.Controllers
         [HttpPut]
         public void Update([FromBody] Game value)
         {
-            ;
             gameLogic.Update(value);
+            this.hub.Clients.All.SendAsync("GameUpdated", value);
         }
 
         // PUT api/<GameController>/5
@@ -48,6 +53,7 @@ namespace NFTURS_HFT_2021222.Endpoint.Controllers
         public void Create([FromBody] Game value)
         {
             gameLogic.Create(value);
+            this.hub.Clients.All.SendAsync("GameCreated", value);
         }
 
 
@@ -55,7 +61,9 @@ namespace NFTURS_HFT_2021222.Endpoint.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var gameToDelete = this.gameLogic.Read(id);
             gameLogic.Delete(id);
+            this.hub.Clients.All.SendAsync("GameDeleted", gameToDelete);
         }
 
        
