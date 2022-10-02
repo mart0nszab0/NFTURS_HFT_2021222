@@ -6,7 +6,30 @@
         xmlns:local="clr-namespace:NFTURS_HFT_2021222.WPFClient"
         mc:Ignorable="d"
         Title="PublisherEditor" Height="450" Width="800">
+    <Window.DataContext>
+        <local:PublisherEditorViewModel/>
+    </Window.DataContext>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Column="0" Content="Hello"/>
+        <ListBox Grid.Row="0" ItemsSource="{Binding Publishers}" SelectedItem="{Binding SelectedPublisher}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding Name}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Column="1">
+            <Label Content="Name" Background="LightBlue" Padding="10"/>
+            <TextBox Text="{Binding SelectedPublisher.Name}" Padding="10" Margin="0, 0, 0, 30"/>
+            <Button Content="Create Publisher" Command="{Binding CreatePublisherCommand}" Margin="10" Padding="10"/>
+            <Button Content="Update Publisher" Command="{Binding UpdatePublisherCommand}" Margin="10" Padding="10"/>
+            <Button Content="Delete Publisher" Command="{Binding DeletePublisherCommand}" Margin="10" Padding="10"/>
+        </StackPanel>
+
     </Grid>
 </Window>
