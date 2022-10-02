@@ -28,7 +28,7 @@
                     Background="Beige" 
                     Margin="30,80, 30, 80"
                     FontSize="35"
-                    Click="Button_Click"
+                    Click="Game_Button_Click"
                     />
 
             <Button Grid.Column="1" 

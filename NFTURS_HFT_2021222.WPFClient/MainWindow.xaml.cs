@@ -25,7 +25,7 @@ namespace NFTURS_HFT_2021222.WPFClient
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Game_Button_Click(object sender, RoutedEventArgs e)
         {
             GameEditor gameEditor = new GameEditor();
             gameEditor.Show();
