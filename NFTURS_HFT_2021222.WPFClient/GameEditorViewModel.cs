@@ -69,7 +69,7 @@ namespace NFTURS_HFT_2021222.WPFClient
 
                 UpdateGameCommand = new RelayCommand( () =>
                 {
-
+                    Games.Update(SelectedGame);
                 });
 
                 DeleteGameCommand = new RelayCommand(() =>
