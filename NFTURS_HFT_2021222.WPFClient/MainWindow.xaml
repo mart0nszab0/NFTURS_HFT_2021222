@@ -5,8 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NFTURS_HFT_2021222.WPFClient"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Szabó Márton - HFT Féléves WPF Kliense" Height="450" Width="800">
+    <Grid Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
 
+        <Label Grid.Row="0" FontSize="30" Content="Game Rental Store Database Manager" FontWeight="Bold" HorizontalContentAlignment="Center"/>
+        <Label  Content="Please choose a category to edit" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" Margin="0,0,0,10" FontWeight="Bold"/>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" 
+                    Content="Game" 
+                    Background="Beige" 
+                    Margin="30,80, 30, 80"
+                    FontSize="35"/>
+
+            <Button Grid.Column="1" 
+                    Content="Genre" 
+                    Background="Beige" 
+                    Margin="30,80, 30, 80"
+                    FontSize="35"/>
+
+            <Button Grid.Column="2" 
+                    Content="Publisher" 
+                    Background="Beige" 
+                    Margin="30,80, 30, 80"
+                    FontSize="35"/>
+        </Grid>
+
+        <Label Content="I have no artistic skills at all but I'll put some filler text here because this part looks way too empty"
+               Grid.Row="2"
+               FontSize="15"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"/>
     </Grid>
 </Window>
