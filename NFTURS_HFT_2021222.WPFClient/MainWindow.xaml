@@ -35,13 +35,17 @@
                     Content="Genre" 
                     Background="Beige" 
                     Margin="30,80, 30, 80"
-                    FontSize="35"/>
+                    FontSize="35"
+                    Click="Genre_ButtonClick"
+                    />
 
             <Button Grid.Column="2" 
                     Content="Publisher" 
                     Background="Beige" 
                     Margin="30,80, 30, 80"
-                    FontSize="35"/>
+                    FontSize="35"
+                    Click="Genre_ButtonClick"
+                    />
         </Grid>
 
         <Label Content="I have no artistic skills at all but I'll put some filler text here because this part looks way too empty"

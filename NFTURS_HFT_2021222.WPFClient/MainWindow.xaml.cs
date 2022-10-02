@@ -30,5 +30,17 @@ namespace NFTURS_HFT_2021222.WPFClient
             GameEditor gameEditor = new GameEditor();
             gameEditor.Show();
         }
+
+        private void Genre_Button_Click(object sender, RoutedEventArgs e)
+        {
+            GenreEditor genreEditor = new GenreEditor();
+            genreEditor.Show();
+        }
+
+        private void Publisher_Button_Click(object sender, RoutedEventArgs e)
+        {
+            PublisherEditor publisherEditor = new PublisherEditor();
+            publisherEditor.Show();
+        }
     }
 }
