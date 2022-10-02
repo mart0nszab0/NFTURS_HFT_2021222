@@ -61,7 +61,7 @@ namespace NFTURS_HFT_2021222.WPFClient
         {
             if (!DesignMode)
             {
-                Publishers = new RestCollection<Publisher>("http://localhost:32095/", "Publisher");
+                Publishers = new RestCollection<Publisher>("http://localhost:32095/", "Publisher", "hub");
 
                 CreatePublisherCommand = new RelayCommand(() =>
                 {
