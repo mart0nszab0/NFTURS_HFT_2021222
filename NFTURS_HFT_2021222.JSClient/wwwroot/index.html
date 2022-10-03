@@ -8,14 +8,33 @@
 <body>
     <h1>Game Catalog</h1>
 
+    <div id="formdiv">
+        <label>Name: </label>
+        <input type="text" id="gamename" />
+
+        <label>Rating: </label>
+        <input type="text" id="gamerating" />
+
+        <button type="button" onclick="create()">Add game</button>
+    </div>
+
+    <div id="updateformdiv">
+        <label>Name: </label>
+        <input type="text" id="gamenametoupdate" />
+
+        <label>Rating: </label>
+        <input type="text" id="gameratingtoupdate" />
+
+        <button type="button" onclick="update()">Update game</button>
+    </div>
+
     <table>
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Publisher</th>
                 <th>Rating</th>
-
+                <th>Actions</th>
             </tr>
         </thead>
 
@@ -23,6 +42,7 @@
         </tbody>
     </table>
 
-    <script src="script.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
