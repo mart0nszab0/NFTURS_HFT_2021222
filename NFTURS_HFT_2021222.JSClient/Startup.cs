@@ -26,6 +26,12 @@ namespace NFTURS_HFT_2021222.JSClient
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(x => x
+                .AllowCredentials()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .WithOrigins("http://localhost:36252"));
+
             app.UseRouting();
 
             app.UseStaticFiles();
